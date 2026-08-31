@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lone Star Bid Lab — Ryan Cupples</title>
-  <meta name="description" content="Underground utilities by day, tool-building by night. Water, sewer, storm, excavation, and the software that makes bidding less annoying.">
+  <meta name="description" content="Ryan Cupples. Underground utilities, bidding, and building tools when the software pisses me off. Not a company — just a personal lab.">
   <link rel="icon" href="/favicon.ico">
   <style>
     :root {
@@ -31,17 +31,16 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       min-height: 100vh;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Header */
     header {
       padding: 3rem 0 2rem;
       border-bottom: 1px solid var(--border);
@@ -72,154 +71,116 @@
       border-radius: 8px;
     }
 
-    /* Hero */
     .hero {
-      padding: 4rem 0;
+      padding: 4rem 0 3rem;
     }
 
     .hero h1 {
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-size: clamp(1.6rem, 4.5vw, 2.25rem);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.25;
       margin-bottom: 1.5rem;
       color: var(--text);
     }
 
-    .hero p {
-      font-size: 1.125rem;
+    .hero .intro {
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 600px;
+      margin-bottom: 1rem;
     }
 
-    /* Sections */
+    .hero .not-a-company {
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--bg-card);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin-top: 1.5rem;
+      border-radius: 0 6px 6px 0;
+    }
+
     section {
-      padding: 3rem 0;
+      padding: 2.5rem 0;
       border-top: 1px solid var(--border);
     }
 
     section h2 {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: var(--accent);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
-    /* Day Job */
-    .work-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .work-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem;
-    }
-
-    .work-item h3 {
+    .prose {
+      color: var(--text-muted);
       font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
     }
 
-    .work-item p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Tools & Projects */
-    .projects-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .project {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-
-    .project h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .project p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .prose p {
       margin-bottom: 1rem;
     }
 
-    .tag {
-      display: inline-block;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+    .prose p:last-child {
+      margin-bottom: 0;
     }
 
-    /* Philosophy */
-    .philosophy {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-
-    .philosophy blockquote {
-      font-size: 1.1rem;
-      font-style: italic;
+    .prose strong {
       color: var(--text);
-      border-left: 3px solid var(--accent);
-      padding-left: 1rem;
-      margin: 0;
+      font-weight: 600;
     }
 
-    /* Shop */
-    .shop-content {
-      display: grid;
-      gap: 1rem;
+    .day-list {
+      list-style: none;
+      margin-top: 1.25rem;
+      padding: 0;
     }
 
-    .shop-content p {
+    .day-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
       color: var(--text-muted);
     }
 
-    .shop-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    .day-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
 
-    .shop-list li {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
+    .tools-section .tool {
+      margin-bottom: 1.5rem;
+    }
+
+    .tools-section .tool:last-child {
+      margin-bottom: 0;
+    }
+
+    .tools-section .tool-name {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .tools-section .tool-desc {
+      color: var(--text-muted);
       font-size: 0.95rem;
     }
 
-    /* Contact */
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      color: var(--text-muted);
     }
 
     .contact-item a {
@@ -233,31 +194,12 @@
       border-color: var(--accent);
     }
 
-    /* Footer */
     footer {
       padding: 2rem 0;
       border-top: 1px solid var(--border);
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
-    }
-
-    /* Responsive */
-    @media (min-width: 640px) {
-      .work-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Fun details */
-    .emoji {
-      font-size: 1.25rem;
-      margin-right: 0.5rem;
-    }
-
-    .highlight {
-      color: var(--text);
-      font-weight: 500;
     }
   </style>
 </head>
@@ -273,121 +215,70 @@
 
     <section class="hero">
       <h1>I color on plans and play with other people's money all day, and build tools when the software pisses me off.</h1>
-      <p>Ryan Cupples. Underground utilities by day — water, sanitary sewer, storm drainage, excavation, paving restoration. When I'm not in the dirt, I'm building the software and AI agents I wish existed. LSBL is just the name for that mix.</p>
-    </section>
-
-    <section>
-      <h2>The Day Job</h2>
-      <div class="work-list">
-        <div class="work-item">
-          <h3><span class="emoji">🚰</span>Water & Sewer</h3>
-          <p>Waterlines, sanitary sewer, service taps, main extensions. The stuff that keeps cities running underground.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">🌧️</span>Storm Drainage</h3>
-          <p>Inlets, manholes, RCP, box culverts. Keeping water where it belongs when it rains.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">🚜</span>Excavation</h3>
-          <p>Trenching, shoring, backfill, compaction. Moving dirt safely and putting it back right.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">🛣️</span>Paving Restoration</h3>
-          <p>Fixing what we dug up. Subgrade, base, asphalt, concrete — leaving it better than we found it.</p>
-        </div>
+      <p class="intro">I'm Ryan Cupples. I bid underground utility work in North Texas — water, sewer, storm, excavation, paving. Nights and weekends I build software and mess around in the shop.</p>
+      <div class="not-a-company">
+        Lone Star Bid Lab isn't a company. It's not a side business. It's just what I call the space where I work on stuff — the bidding, the tools, the experiments. If you're here because you reverse-looked an email address, now you know.
       </div>
     </section>
 
     <section>
-      <h2>Bidding</h2>
-      <div class="work-list">
-        <div class="work-item">
-          <h3><span class="emoji">📐</span>Plans & Takeoffs</h3>
-          <p>Reading civil drawings, counting pipe, measuring trench, figuring out what the specs actually mean.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">💵</span>Quotes & Pricing</h3>
-          <p>Material quotes, labor rates, equipment costs. Building a number that wins work and still makes money.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">🎯</span>Bid Strategy</h3>
-          <p>Knowing when to be aggressive, when to pad for risk, which jobs are worth chasing.</p>
-        </div>
-        <div class="work-item">
-          <h3><span class="emoji">⚖️</span>Risk Assessment</h3>
-          <p>Rock clauses, dewatering, traffic control, utility conflicts. The stuff that eats profit if you miss it.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Tools I Build</h2>
-      <div class="projects-grid">
-        <div class="project">
-          <h3>AI Agents for Bidding</h3>
-          <p>Teaching machines to read bid tabs, pull spec requirements, organize addenda, and catch the details humans miss at 2am before bid day.</p>
-          <div>
-            <span class="tag">Python</span>
-            <span class="tag">LLMs</span>
-            <span class="tag">PDF parsing</span>
-          </div>
-        </div>
-        <div class="project">
-          <h3>Takeoff Automation</h3>
-          <p>Tools to speed up quantity takeoffs. Less clicking, more thinking about whether the quantities make sense.</p>
-          <div>
-            <span class="tag">Spreadsheets</span>
-            <span class="tag">Scripts</span>
-            <span class="tag">CAD integration</span>
-          </div>
-        </div>
-        <div class="project">
-          <h3>Whatever Needs Building</h3>
-          <p>If existing software is slow, expensive, or annoying — I'll build something better. Or at least something that works the way I think.</p>
-          <div>
-            <span class="tag">Web apps</span>
-            <span class="tag">Automation</span>
-            <span class="tag">APIs</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Shop Tinkering</h2>
-      <div class="shop-content">
-        <p>Not everything is underground or digital. Sometimes you need to build something with your hands.</p>
-        <ul class="shop-list">
-          <li>🔧 Fabrication</li>
-          <li>⚡ Welding</li>
-          <li>🔩 Mechanical repairs</li>
-          <li>🛠️ Equipment mods</li>
-          <li>🧪 Random experiments</li>
+      <h2>What My Days Look Like</h2>
+      <div class="prose">
+        <p>Most of my time goes to estimating and bidding underground utility projects. That means reading civil plans, doing takeoffs, chasing material quotes, pricing labor and equipment, and putting together bids that win work without leaving money on the table.</p>
+        <p>The actual construction side — waterlines, sanitary sewer, storm drainage, excavation, paving restoration — that's what the numbers are about. I'm not out running equipment every day, but I've done enough of it to know what things actually cost and what goes wrong.</p>
+        <ul class="day-list">
+          <li>Reviewing plans and specs for new bid invitations</li>
+          <li>Quantity takeoffs — pipe lengths, fittings, manholes, trench volumes</li>
+          <li>Calling suppliers for material pricing</li>
+          <li>Building labor and equipment estimates</li>
+          <li>Figuring out what the spec actually requires vs. what's standard</li>
+          <li>Deciding which jobs are worth chasing and how aggressive to be</li>
+          <li>Submitting bids and waiting to see if the number hit</li>
         </ul>
       </div>
     </section>
 
     <section>
-      <h2>Why "Lone Star Bid Lab"?</h2>
-      <div class="philosophy">
-        <blockquote>
-          It's not a company. It's just a name for the way I work — bidding underground projects in Texas, building tools to make that easier, and tinkering on whatever else needs fixing. The "lab" part is the experimentation. Sometimes it works. Sometimes you learn why it doesn't.
-        </blockquote>
+      <h2>Tools I Tinker With</h2>
+      <div class="prose tools-section">
+        <p>Estimating software is expensive, clunky, or both. So I build my own stuff when something's broken enough to be worth fixing.</p>
+        
+        <div class="tool">
+          <div class="tool-name">AI agents for bid day</div>
+          <div class="tool-desc">Scripts that read bid tabs, pull spec requirements, organize addenda, flag the stuff I'd miss at 2am. Not a product — just things I've duct-taped together because the alternative was doing it manually.</div>
+        </div>
+        
+        <div class="tool">
+          <div class="tool-name">Takeoff helpers</div>
+          <div class="tool-desc">Spreadsheets and scripts to speed up quantity work. The goal is less clicking and more thinking about whether the numbers make sense.</div>
+        </div>
+        
+        <div class="tool">
+          <div class="tool-name">Random automation</div>
+          <div class="tool-desc">If I do something tedious more than twice, I'll probably try to automate it. Sometimes it works. Sometimes I spend more time automating than I would have spent just doing the thing.</div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>Get in Touch</h2>
+      <h2>Shop Stuff</h2>
+      <div class="prose">
+        <p>Not everything is spreadsheets and code. I have a shop where I mess around with welding, fabrication, and fixing things that break. This is hobby territory — I'm not running a welding business or taking fab jobs. It's just where I go when I need to make something physical or when staring at a screen gets old.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Say Hi</h2>
       <div class="contact-info">
         <div class="contact-item">
           <span>📧</span>
-          <a href="mailto:info@lonestarbidlab.com">info@lonestarbidlab.com</a>
+          <a href="mailto:ryan@lonestarbidlab.com">ryan@lonestarbidlab.com</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Ryan Cupples — Lone Star Bid Lab</p>
+      <p>© 2026 Ryan Cupples</p>
     </footer>
   </div>
 </body>
