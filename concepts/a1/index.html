@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lone Star Bid Lab — Ryan Cupples</title>
-  <meta name="description" content="Ryan Cupples bids underground utility work in North Texas and builds tools when the software pisses him off.">
+  <meta name="description" content="Ryan Cupples bids underground utilities in North Texas—water, sewer, storm—and builds tools when the software pisses him off.">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,14 +81,15 @@
       color: var(--accent);
     }
     
-    .contact-link {
+    .header-email {
       color: var(--text-muted);
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
+      font-family: 'SF Mono', 'Consolas', 'Liberation Mono', Menlo, monospace;
       text-decoration: none;
       transition: color 0.2s;
     }
     
-    .contact-link:hover {
+    .header-email:hover {
       color: var(--accent);
     }
     
@@ -279,55 +280,6 @@
       line-height: 1.5;
     }
     
-    /* Contact */
-    .contact-content {
-      display: grid;
-      gap: 2rem;
-      align-items: start;
-    }
-    
-    @media (min-width: 768px) {
-      .contact-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    .contact-text {
-      color: var(--text-muted);
-      font-size: 1.0625rem;
-    }
-    
-    .contact-box {
-      background: var(--accent-dim);
-      border: 1px solid var(--accent);
-      padding: 1.5rem;
-      transition: transform 0.2s;
-    }
-    
-    .contact-box:hover {
-      transform: translateY(-2px);
-    }
-    
-    .contact-box h3 {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.75rem;
-      color: var(--accent);
-    }
-    
-    .contact-box a {
-      color: var(--text);
-      font-size: 1rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    
-    .contact-box a:hover {
-      color: var(--accent);
-    }
-    
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
@@ -342,6 +294,16 @@
     }
     
     footer span {
+      color: var(--accent);
+    }
+    
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    footer a:hover {
       color: var(--accent);
     }
     
@@ -360,7 +322,7 @@
         <img src="/BidLabLogo1.png" alt="Lone Star Bid Lab">
         <span class="logo-text">Lone Star Bid Lab</span>
       </a>
-      <a href="mailto:ryan@lonestarbidlab.com" class="contact-link">ryan@lonestarbidlab.com</a>
+      <a href="mailto:ryan@lonestarbidlab.com" class="header-email">ryan@lonestarbidlab.com</a>
     </div>
   </header>
 
@@ -368,7 +330,7 @@
     <section class="hero">
       <p class="mono sheet-label">North Texas — Underground Utilities</p>
       <h1>I spend my days coloring on plans and playing with other people's money. Nights I build tools—<span class="highlight">mostly because the software pisses me off.</span></h1>
-      <p class="hero-sub">I'm Ryan Cupples. I bid underground utility work in North Texas—water, sewer, storm, excavation, paving. The tools are just what happens when estimating software costs too much and does too little.</p>
+      <p class="hero-sub">I'm Ryan Cupples. I bid underground utilities in North Texas—water, sewer, storm. The tools are just what happens when estimating software costs too much and does too little.</p>
       <div class="callout">
         <strong>Lone Star Bid Lab isn't a company.</strong> It's not a side business. It's just what I call the space where I work on stuff—the bidding, the tools, the experiments. If you reverse-looked an email address, now you know.
       </div>
@@ -383,7 +345,7 @@
         <div class="day-content">
           <div class="day-text">
             <p>Most of my time goes to estimating and bidding underground utility projects. That means reading civil plans, doing takeoffs, chasing material quotes, pricing labor and equipment, and putting together bids that win work without leaving money on the table.</p>
-            <p>The actual construction—waterlines, sanitary sewer, storm drainage, excavation, paving restoration—that's what the numbers are about. I've done enough of it to know what things actually cost and what goes wrong.</p>
+            <p>The actual construction—waterlines, sanitary sewer, storm drainage—that's what the numbers are about. I've done enough of it to know what things actually cost and what goes wrong.</p>
           </div>
           <div class="day-list">
             <h3>A Typical Day</h3>
@@ -424,26 +386,10 @@
         </div>
       </div>
     </section>
-
-    <section>
-      <div class="section-inner">
-        <div class="section-header">
-          <p class="mono sheet-label">Sheet 03 / Contact</p>
-          <h2>Say Hi</h2>
-        </div>
-        <div class="contact-content">
-          <p class="contact-text">If you want to reach out—about work, tools, or just to say hi—feel free. This is a personal site, not a business pitch. No intake form. Just email.</p>
-          <div class="contact-box">
-            <h3>Email</h3>
-            <a href="mailto:ryan@lonestarbidlab.com">ryan@lonestarbidlab.com</a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
-    <p>© 2026 <span>Lone Star Bid Lab</span> — Ryan Cupples — Built in Texas</p>
+    <p>© 2026 <span>Lone Star Bid Lab</span> — Ryan Cupples — <a href="mailto:ryan@lonestarbidlab.com">ryan@lonestarbidlab.com</a></p>
     <p class="tagline">Still waiting to see if the number hit.</p>
   </footer>
 </body>
