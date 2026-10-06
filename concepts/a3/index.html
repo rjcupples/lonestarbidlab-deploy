@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lone Star Bid Lab — Ryan Cupples</title>
+  <meta name="description" content="Ryan Cupples bids underground utility work in North Texas and builds tools when the software pisses him off.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-dark: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #e85d5d;
+      --accent-dim: rgba(232, 93, 93, 0.15);
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .mono {
+      font-family: 'SF Mono', 'Consolas', 'Liberation Mono', Menlo, monospace;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    
+    .sheet-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .sheet-label::before {
+      content: '△';
+      font-size: 0.5rem;
+      color: var(--accent);
+    }
+    
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+    }
+    
+    .header-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none;
+    }
+    
+    .logo img {
+      width: 44px;
+      height: 44px;
+    }
+    
+    .logo-text {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+    
+    .contact-link {
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .contact-link:hover {
+      color: var(--accent);
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 5rem 2rem 6rem;
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    
+    .hero-label {
+      margin-bottom: 2rem;
+    }
+    
+    .hero h1 {
+      font-size: clamp(1.875rem, 5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.2;
+      max-width: 52rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero-punchline {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero-punchline .highlight {
+      background: var(--accent);
+      color: white;
+      padding: 0.1em 0.3em;
+      margin-left: 0.1em;
+    }
+    
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      max-width: 38rem;
+      margin-bottom: 3rem;
+    }
+    
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      max-width: 34rem;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+    
+    .callout strong {
+      color: var(--text);
+    }
+    
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .section-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-header h2 {
+      font-size: 1.625rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    
+    /* Day Job */
+    .day-content {
+      display: grid;
+      gap: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+      .day-content {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+    
+    .day-text p {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+      margin-bottom: 1rem;
+    }
+    
+    .day-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .day-list {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    
+    .day-list h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .day-list h3::before {
+      content: '△';
+      font-size: 0.5rem;
+    }
+    
+    .day-list ul {
+      list-style: none;
+    }
+    
+    .day-list li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9375rem;
+      transition: color 0.15s;
+    }
+    
+    .day-list li:hover {
+      color: var(--text);
+    }
+    
+    .day-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .day-list li .aside {
+      color: var(--text-muted);
+      opacity: 0.7;
+      font-size: 0.8125rem;
+    }
+    
+    /* Tools */
+    .tools-intro {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+      max-width: 42rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tools-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    
+    @media (min-width: 640px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .tool-card h3 {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tool-card p {
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+    }
+    
+    /* Contact */
+    .contact-content {
+      display: grid;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    @media (min-width: 768px) {
+      .contact-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .contact-text {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+    }
+    
+    .contact-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      padding: 1.5rem;
+      transition: transform 0.2s;
+    }
+    
+    .contact-box:hover {
+      transform: translateY(-2px);
+    }
+    
+    .contact-box h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    
+    .contact-box a {
+      color: var(--text);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .contact-box a:hover {
+      color: var(--accent);
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+    
+    footer span {
+      color: var(--accent);
+    }
+    
+    footer .tagline {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: italic;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <img src="/BidLabLogo1.png" alt="Lone Star Bid Lab">
+        <span class="logo-text">Lone Star Bid Lab</span>
+      </a>
+      <a href="mailto:ryan@lonestarbidlab.com" class="contact-link">ryan@lonestarbidlab.com</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="mono sheet-label">North Texas — Underground Utilities</p>
+      <h1>I color on plans all day and play with other people's money.</h1>
+      <p class="hero-punchline">Then I build tools because the software<span class="highlight">pisses me off.</span></p>
+      <p class="hero-sub">I'm Ryan Cupples. I bid underground utility work in North Texas—water, sewer, storm, excavation, paving. The tools are what happens when you get tired of bad software and have time after bid day.</p>
+      <div class="callout">
+        <strong>Lone Star Bid Lab isn't a company.</strong> It's not a side business. It's just what I call the space where I work on stuff—the bidding, the tools, the experiments. If you reverse-looked an email address, now you know.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="mono sheet-label">Sheet 01 / The Work</p>
+          <h2>What My Days Look Like</h2>
+        </div>
+        <div class="day-content">
+          <div class="day-text">
+            <p>Most of my time goes to estimating and bidding underground utility projects. That means reading civil plans, doing takeoffs, chasing material quotes, pricing labor and equipment, and putting together bids that win work without leaving money on the table.</p>
+            <p>The actual construction—waterlines, sanitary sewer, storm drainage, excavation, paving restoration—that's what the numbers are about. I've done enough of it to know what things actually cost and what goes wrong.</p>
+          </div>
+          <div class="day-list">
+            <h3>A Typical Day</h3>
+            <ul>
+              <li>Reviewing plans and specs <span class="aside">— usually at 6am with coffee</span></li>
+              <li>Quantity takeoffs — pipe, fittings, manholes, trench volumes</li>
+              <li>Calling suppliers for pricing <span class="aside">— they never call back fast enough</span></li>
+              <li>Building labor and equipment estimates</li>
+              <li>Figuring out what the spec actually requires vs. what's standard</li>
+              <li>Deciding which jobs are worth chasing</li>
+              <li>Submitting bids <span class="aside">— then waiting to see if the number hit</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="mono sheet-label">Sheet 02 / The Lab</p>
+          <h2>Tools I Tinker With</h2>
+        </div>
+        <p class="tools-intro">Estimating software is expensive, clunky, or both. So I build my own stuff when something's broken enough to be worth fixing. These aren't products—just things I've duct-taped together because the alternative was doing it manually.</p>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>AI agents for bid day</h3>
+            <p>Scripts that read bid tabs, pull spec requirements, organize addenda, flag the stuff I'd miss at 2am.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Takeoff helpers</h3>
+            <p>Spreadsheets and scripts to speed up quantity work. Less clicking, more thinking about whether the numbers make sense.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Random automation</h3>
+            <p>If I do something tedious more than twice, I'll probably try to automate it. Sometimes it works. Sometimes I spend more time automating than just doing the thing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="mono sheet-label">Sheet 03 / Contact</p>
+          <h2>Say Hi</h2>
+        </div>
+        <div class="contact-content">
+          <p class="contact-text">If you want to reach out—about work, tools, or just to say hi—feel free. This is a personal site, not a business pitch. No intake form. Just email.</p>
+          <div class="contact-box">
+            <h3>Email</h3>
+            <a href="mailto:ryan@lonestarbidlab.com">ryan@lonestarbidlab.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Lone Star Bid Lab</span> — Ryan Cupples — Built in Texas</p>
+    <p class="tagline">Still waiting to see if the number hit.</p>
+  </footer>
+</body>
+</html>
